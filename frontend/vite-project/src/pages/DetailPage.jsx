@@ -12,7 +12,7 @@ const DetailPage = () => {
   useEffect(() => {
     const fetchNote = async () => {
       try {
-        const response = await axios.get(`http://localhost:5010/api/notes/${id}`);
+        const response = await axios.get(`/api/notes/${id}`);
         setNote(response.data);
       } catch (err) {
         console.error('Error fetching note:', err);

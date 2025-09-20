@@ -16,7 +16,7 @@ const CreatePage = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5010/api/notes', {
+      const response = await axios.post('/api/notes', {
         title,
         content,
       });

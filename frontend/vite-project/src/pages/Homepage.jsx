@@ -15,7 +15,7 @@ const Homepage = () => {
       return;
     }
     try {
-      await axios.delete(`http://localhost:5010/api/notes/${id}`);
+      await axios.delete(`/api/notes/${id}`);
       setNotes(notes.filter(note => note._id !== id));
       toast.success('Note deleted successfully!');
     } catch (err) {
@@ -27,7 +27,7 @@ const Homepage = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await axios.get('http://localhost:5010/api/notes');
+        const response = await axios.get('/api/notes');
         setNotes(response.data);
         setIsLimitReached(false); // Reset if successful
       } catch (err) {
