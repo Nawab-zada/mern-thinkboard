@@ -1,5 +1,6 @@
 // server.js
 import 'dotenv/config'; // Import dotenv/config at the very top
+import path from 'path';
 import express from "express";
 const app = express();
 import cors from 'cors';
@@ -23,9 +24,14 @@ app.use((req,res,next)=>{
 connectDB();
 
 // mongodb+srv://khan234:<db_password>@cluster0.frhqyuy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+app.use(express.static(path.resolve("frontend", "dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve("frontend", "dist", "index.html"));
+});
 
 // Start the server
-const PORT = 5010;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`✅ Server is running on http://localhost:${PORT}`);
 });
